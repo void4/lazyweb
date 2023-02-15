@@ -5,7 +5,7 @@ from db import *
 
 @app.route("/")
 def r_index():
-    return render_template("index.html", somestaticdata="hello")
+    return render_template("index.html", somedata="hello", somelistdata=[1,2,3])
 
 @app.route("/square", methods=["POST"])
 def r_square():
