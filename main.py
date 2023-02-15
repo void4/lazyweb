@@ -1,3 +1,5 @@
+from random import shuffle
+
 from flask import render_template, request, jsonify
 
 from app import *
@@ -5,7 +7,15 @@ from db import *
 
 @app.route("/")
 def r_index():
-    return render_template("index.html", somedata="hello", somelistdata=[1,2,3])
+    return render_template("index.html", somedata="hello", somelistdata=[1,2,3,4,5])
+
+@app.route("/newlist", methods=["POST"])
+def r_newlist():
+    l = [1,2,3,4,5]
+
+    shuffle(l)
+
+    return jsonify({"somelistdata": l})
 
 @app.route("/square", methods=["POST"])
 def r_square():

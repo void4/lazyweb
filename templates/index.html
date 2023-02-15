@@ -14,6 +14,9 @@
     <li v-for="datum in somelistdata">{{ datum }}
   </ul>
 
+  <button @click="request('newlist')">This list is boring, I want a new list!</button><br><br>
+
+  <br><br>
   <input type="number" v-model="somenumber"></input>
   <button @click="request('square', {'number': somenumber})">Calculate square on server</button><br><br>
   Result: {{ someresult }}
