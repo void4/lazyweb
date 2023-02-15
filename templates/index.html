@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Lazyweb - Index{% endblock %}
+
+{% block content %}
+
+<div id="app">
+  <h1><a href="/">Lazyweb</a></h1>
+
+  Some static data: {{ somestaticdata }}
+  <br><br>
+
+  <input type="number" v-model="somenumber"></input>
+  <button @click="request('square', {'number': somenumber})">Calculate square on server</button><br><br>
+  Result: {{ someresult }}
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    somestaticdata: %% somestaticdata|tojson %%,
+
+    somenumber: 7,
+    someresult: null
+  },
+	methods: {
+    request(path, data) {
+      axios.post("/"+path, data)
+      .then(function (response) {
+        app.someresult = response.data
+      })
+    },
+	}
+})
+
+</script>
+
+{% endblock %}
