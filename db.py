@@ -14,8 +14,16 @@ def get_table():
 	table = db["mytable"]
 	return table
 
+"""
+We are using the database here to store some previous calculation results, but it could be anything!
+some data you collected yourself, user generated content, user accounts...
+
+Just create a new get_<tablename> function for each new table and use them in your new functions
+"""
+
 def set_cache(input, output):
-	"""creates a new row in the database. dataset will insert columns automatically if they don't exist yet, the same goes for the database file"""
+	"""creates a new row in the database. dataset will insert columns automatically if they don't exist yet
+	the same goes for the table and the database file"""
 
 	table = get_table()
 
