@@ -40,7 +40,9 @@ var app = new Vue({
     request(path, data) {
       axios.post("/"+path, data)
       .then(function (response) {
-        app.someresult = response.data
+        for (const [key, value] of Object.entries(response.data)) {
+          app[key] = value
+        }
       })
     },
 	}

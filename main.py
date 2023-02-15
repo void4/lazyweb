@@ -19,11 +19,11 @@ def r_square():
     cached = get_cache(number)
     if cached is not None:
         print("cached!")
-        return jsonify(cached)
+        number_squared = cached
+    else:
+        number_squared = number**2
+        set_cache(number, number_squared)
 
-    number_squared = number**2
-    set_cache(number, number_squared)
-
-    return jsonify(number_squared)
+    return jsonify({"someresult": number_squared})
 
 app.run("localhost", 1337, debug=True)
