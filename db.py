@@ -3,16 +3,22 @@ from flask import g
 
 from app import *
 
+# If it doesn't exist yet, Dataset will create a new file, dataset.db in this directory
+# Together with the temporary database.db-shm and database.db-wal files
+# which are created on writes (do not delete these!), it makes up the database
+# Open database.db with DB Browser for SQLite to inspect its contents
+
 DATABASE = "sqlite:///database.db?check_same_thread=False"
 
 def get_table():
 	"""can be called by any function to get access to the database table called 'mytable'"""
 
 	db = getattr(g, "_database", None)
+
 	if db is None:
 		db = g._database = dataset.connect(DATABASE)
-	table = db["mytable"]
-	return table
+
+	return db["mytable"]
 
 """
 We are using the database here to store some previous calculation results, but it could be anything!
