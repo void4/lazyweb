@@ -9,8 +9,12 @@ def r_index():
 
 @app.route("/square", methods=["POST"])
 def r_square():
-    number = float(request.json["number"])
+    """squares a number, checks the database first if the number was already computed,
+    if so, it returns the cached result,
+    if not, it adds the number and its result to the database
+    before sending it back to the user"""
 
+    number = float(request.json["number"])
 
     cached = get_cache(number)
     if cached is not None:

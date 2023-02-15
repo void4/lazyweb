@@ -1,10 +1,13 @@
 import dataset
 from flask import g
+
 from app import *
 
 DATABASE = "sqlite:///database.db?check_same_thread=False"
 
 def get_table():
+	"""can be called by any function to get access to the database table called 'mytable'"""
+
 	db = getattr(g, "_database", None)
 	if db is None:
 		db = g._database = dataset.connect(DATABASE)
@@ -12,6 +15,7 @@ def get_table():
 	return table
 
 def set_cache(input, output):
+	"""creates a new row in the database. dataset will insert columns automatically if they don't exist yet, the same goes for the database file"""
 
 	table = get_table()
 
