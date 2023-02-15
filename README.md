@@ -2,6 +2,8 @@
 
 The laziest way I found so far for creating custom web apps
 
+![image preview](preview.png)
+
 Tested with Python 3.9.12
 
 ## Install dependencies
