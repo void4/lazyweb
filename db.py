@@ -3,11 +3,13 @@ from flask import g
 
 from app import *
 
-# If it doesn't exist yet, Dataset will create a new file, dataset.db in this directory
-# Together with the database.db-shm and database.db-wal files
-# which are created on reads and writes (do not delete these!), it makes up the database
-# Open database.db with DB Browser for SQLite to inspect its contents
-# You can copy these three files somewhere to make a backup of your database
+"""
+If it doesn't exist yet, Dataset will create a new file, database.db in this directory
+Together with the database.db-shm and database.db-wal files
+which are created on reads and writes (do not delete these!), it makes up the database
+Open database.db with DB Browser for SQLite to inspect its contents
+You can copy these three files somewhere to make a backup of your database
+"""
 
 DATABASE = "sqlite:///database.db?check_same_thread=False"
 
